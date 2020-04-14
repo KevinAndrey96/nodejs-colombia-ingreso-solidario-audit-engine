@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "cedulas_db",
+    "password": "cedulas_secure_password",
+    "database": "cedulas_db",
+    "host": "localhost",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "cedulas_db",
+    "password": "cedulas_secure_password",
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "cedulas_db",
+    "password": "cedulas_secure_password",
+    "database": "cedulas_db",
+    "host": "localhost",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  }
+}
