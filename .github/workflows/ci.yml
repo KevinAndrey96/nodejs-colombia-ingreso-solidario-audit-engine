@@ -1,0 +1,46 @@
+name: CI - Ingreso Solidario Audit Engine
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  test:
+    name: Node.js Test & Verification
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Validate Syntax (Node.js Syntax Check)
+        run: |
+          node --check app.js
+          node --check lib/anomalyDetector.js
+          node --check models/index.js
+          node --check models/person.js
+          node --check scripts/test_audit_engine.js
+
+      - name: Run Anomaly Engine Test Suite
+        run: npm test
+
+      - name: Validate SQL Seed Data
+        run: |
+          node -e "
+          const fs = require('fs');
+          const sql = fs.readFileSync('docker/init.sql', 'utf8');
+          if (!sql.includes('CREATE TABLE IF NOT EXISTS \`People\`') || !sql.includes('11111111')) {
+            throw new Error('docker/init.sql validation failed');
+          }
+          console.log('[✓] docker/init.sql verified successfully!');
+          "

@@ -1,25 +1,24 @@
 {
   "development": {
-    "username": "cedulas_db",
+    "username": "cedulas_user",
     "password": "cedulas_secure_password",
     "database": "cedulas_db",
-    "host": "localhost",
+    "host": "127.0.0.1",
+    "port": 5437,
     "dialect": "mysql",
     "operatorsAliases": false
   },
   "test": {
-    "username": "cedulas_db",
-    "password": "cedulas_secure_password",
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
+    "dialect": "sqlite",
+    "storage": ":memory:",
     "operatorsAliases": false
   },
   "production": {
-    "username": "cedulas_db",
+    "username": "cedulas_user",
     "password": "cedulas_secure_password",
     "database": "cedulas_db",
-    "host": "localhost",
+    "host": "db",
+    "port": 3306,
     "dialect": "mysql",
     "operatorsAliases": false
   }

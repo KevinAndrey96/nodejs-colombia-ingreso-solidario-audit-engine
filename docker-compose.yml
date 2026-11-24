@@ -1,0 +1,47 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ingreso_solidario_audit_api
+    restart: unless-stopped
+    ports:
+      - "8097:8097"
+    environment:
+      NODE_ENV: production
+      PORT: 8097
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: cedulas_user
+      DB_PASSWORD: cedulas_secure_password
+      DB_NAME: cedulas_db
+      DB_DIALECT: mysql
+    depends_on:
+      - db
+    networks:
+      - audit_network
+
+  db:
+    image: mysql:8.0
+    container_name: ingreso_solidario_audit_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root_secure_password
+      MYSQL_DATABASE: cedulas_db
+      MYSQL_USER: cedulas_user
+      MYSQL_PASSWORD: cedulas_secure_password
+    ports:
+      - "5437:3306"
+    volumes:
+      - cedulas_mysql_data:/var/lib/mysql
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - audit_network
+
+networks:
+  audit_network:
+    driver: bridge
+
+volumes:
+  cedulas_mysql_data:
+    driver: local

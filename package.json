@@ -1,25 +1,35 @@
 {
-  "name": "cedulas",
+  "name": "nodejs-colombia-ingreso-solidario-audit-engine",
   "version": "1.0.0",
-  "description": "",
+  "description": "High-throughput data ingestion, anomaly detection, and civic audit engine engineered during the Colombian COVID-19 pandemic to evaluate national beneficiary identity records and Sisbén scores for Ingreso Solidario (DNP).",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "test": "node scripts/test_audit_engine.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KevinAndrey96/Cedulas.git"
+    "url": "git+https://github.com/KevinAndrey96/nodejs-colombia-ingreso-solidario-audit-engine.git"
   },
   "keywords": [
-    "ingreso",
-    "solidario"
+    "ingreso-solidario",
+    "dnp-colombia",
+    "civic-tech",
+    "audit-engine",
+    "anomaly-detection",
+    "cedulas",
+    "sisben",
+    "nodejs",
+    "express",
+    "sequelize",
+    "docker"
   ],
-  "author": "Kevin Andrey Herrera Siva",
-  "license": "ISC",
+  "author": "Kevin Andrey Herrera Silva <kahs_kevin@hotmail.com>",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/KevinAndrey96/Cedulas/issues"
+    "url": "https://github.com/KevinAndrey96/nodejs-colombia-ingreso-solidario-audit-engine/issues"
   },
-  "homepage": "https://github.com/KevinAndrey96/Cedulas#readme",
+  "homepage": "https://github.com/KevinAndrey96/nodejs-colombia-ingreso-solidario-audit-engine#readme",
   "dependencies": {
     "express": "^4.17.1",
     "mysql2": "^2.1.0",
