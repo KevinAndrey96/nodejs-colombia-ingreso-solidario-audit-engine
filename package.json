@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/KevinAndrey96/nodejs-colombia-ingreso-solidario-audit-engine#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.22.0",
     "mysql2": "^2.1.0",
     "sequelize": "^5.21.6"
   },
